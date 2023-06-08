@@ -14,6 +14,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation(platform("com.google.cloud:libraries-bom:26.16.0"))
+    implementation("com.google.cloud:google-cloud-bigquery")
 }
 
 tasks.test {
