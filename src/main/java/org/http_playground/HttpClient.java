@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class HttpClient {
@@ -46,21 +47,19 @@ public class HttpClient {
             in.close();
             System.out.println(content);
 
-        } catch (MalformedURLException ex) {
-            throw new RuntimeException(ex);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
-private class ParameterStringBuilder {
+private static class ParameterStringBuilder {
     public static String getParamsString(Map<String, String> params)
             throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
 
         for (Map.Entry<String, String> entry : params.entrySet()) {
-            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+            result.append(URLEncoder.encode(entry.getKey(), StandardCharsets.UTF_8));
             result.append("=");
-            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+            result.append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
             result.append("&");
         }
 
